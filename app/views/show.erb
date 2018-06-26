@@ -1,31 +1,52 @@
 <h1>HERE'S THE TABLE</h1>
 
-<%= table_for @envelopes, :sortable => true do |table| %>
-
-<%= table_for @users,
-  # Specifies that all columns are sortable by default
-      :sortable => true,
-  <% # Outputs the email column of the user; override the default generated header for the column with "Email Address" %>
-  <% table.column :in_prod, :header => "INPROD" %>
-
-  <%# Outputs the first name column of the user with the :downcase method applied to it %>
-  <% table.column :model, :header => "MODEL" %>
-
-  <%# Outputs the last name column of the user using formatter Proc to dynamically specify what is output in the data cell %>
-  <% table.column :fg_item, :header => "FG ITEM" %>
-
-
-  <!-- <%#
-    Method 3 (again) for creating a link: Rely on RESTful routes to generate the link, with a "delete" method
-    Applies a confirmation to the link
-    Specifies the data to display in the column as "Delete"
-  %>
-  <% table.column :data => "Delete", :link_method => :delete, :link_confirm => "Are you sure?" %> -->
-
-  <%# Adds a footer that spans all the columns of the table and shows pagination links for the table %>
-  <% table.footer do %>
-    <div>
-      <%= will_paginate @envelopes %>
-    </div>
+<table border="1px solid black" width=90% style="text-align: center">
+  <tr>
+    <th>IN_PROD</th>
+    <th>MODEL</th>
+    <th>FG_ITEM</th>
+    <th>ITEM</th>
+    <th>FILL_COUNT</th>
+    <th>IN_SHT_REQ</th>
+    <th>NET_REQD</th>
+    <th>AVAILABLE</th>
+    <th>AVAIL_SHTS</th>
+    <th>WHS_AVAIL_NOW</th>
+    <th>THIS_ID</th>
+    <th>LINKED_TO_ID</th>
+    <th>SHIP_WHSE</th>
+    <th>MAKE_WHSE</th>
+    <th>PLANNED_ENV</th>
+    <th>OUTS</th>
+    <th>USES_SAFETY_STOCK</th>
+    <th>LINED_TYPE</th>
+    <th>E_DATE</th>
+    <th>SCENARIO</th>
+    <th>NOTE</th>
+  </tr>
+  <% @envelopes.each do |envelope| %>
+    <tr style="text-align: center" style="width: 100%">
+      <td> <%= envelope.in_prod %> </td>
+      <td> <%= envelope.model %> </td>
+      <td> <%= envelope.fg_item %> </td>
+      <td> <%= envelope.item %> </td>
+      <td> <%= envelope.fill_count %> </td>
+      <td> <%= envelope.in_sht_req %> </td>
+      <td> <%= envelope.net_reqd %> </td>
+      <td> <%= envelope.available %> </td>
+      <td> <%= envelope.avail_shts %> </td>
+      <td> <%= envelope.whs_avail_now %> </td>
+      <td> <%= envelope.this_id %> </td>
+      <td> <%= envelope.linked_to_id %> </td>
+      <td> <%= envelope.ship_whse %> </td>
+      <td> <%= envelope.make_whse %> </td>
+      <td> <%= envelope.planned_env %> </td>
+      <td> <%= envelope.outs %> </td>
+      <td> <%= envelope.uses_safety_stock %> </td>
+      <td> <%= envelope.lined_type %> </td>
+      <td> <%= envelope.e_date %> </td>
+      <td> <%= envelope.scenario %> </td>
+      <td> <%= envelope.note %> </td>
+    </tr>
   <% end %>
-<% end %>
+</table>

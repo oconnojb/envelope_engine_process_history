@@ -10,12 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/show' do
-    @envelopes = Envelope.unscoped
-    if params[:order] && ["asc", "desc"].include?(params[:sort_mode])
-      order = params[:order].split(",").map {|o| "#{o} #{params[:sort_mode]}" }.join(", ")
-      @envelopes = @envelopes.order(order)
-    end
-    @envelopes = @envelopes.paginate(:per_page => 10, :page => params[:page])
+    @envelopes = Envelope.all
     erb :show
   end
 
