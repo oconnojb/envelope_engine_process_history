@@ -1,1 +1,31 @@
 <h1>HERE'S THE TABLE</h1>
+
+<%= table_for @envelopes, :sortable => true do |table| %>
+
+<%= table_for @users,
+  # Specifies that all columns are sortable by default
+      :sortable => true,
+  <% # Outputs the email column of the user; override the default generated header for the column with "Email Address" %>
+  <% table.column :in_prod, :header => "INPROD" %>
+
+  <%# Outputs the first name column of the user with the :downcase method applied to it %>
+  <% table.column :model, :header => "MODEL" %>
+
+  <%# Outputs the last name column of the user using formatter Proc to dynamically specify what is output in the data cell %>
+  <% table.column :fg_item, :header => "FG ITEM" %>
+
+
+  <!-- <%#
+    Method 3 (again) for creating a link: Rely on RESTful routes to generate the link, with a "delete" method
+    Applies a confirmation to the link
+    Specifies the data to display in the column as "Delete"
+  %>
+  <% table.column :data => "Delete", :link_method => :delete, :link_confirm => "Are you sure?" %> -->
+
+  <%# Adds a footer that spans all the columns of the table and shows pagination links for the table %>
+  <% table.footer do %>
+    <div>
+      <%= will_paginate @envelopes %>
+    </div>
+  <% end %>
+<% end %>
