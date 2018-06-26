@@ -1,0 +1,21 @@
+<%= params %>
+<%= Envelope.all.first[params[:columns][0]] %>
+
+<table border="1px solid black" width=100% style="text-align: center">
+  <tr>
+    <% params[:columns].each_with_index do |col, i| %>
+      <th> <%= params[:columns][i] %> </th>
+    <% end %>
+  </tr>
+
+  <% @envelopes.each do |envelope| %>
+  <tr>
+    <% params[:columns].each_with_index do |col, i| %>
+
+        <td> <%= envelope[params[:columns][i]] %> </td>
+
+    <% end %>
+  </tr>
+
+  <% end %>
+</table>

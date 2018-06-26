@@ -9,9 +9,14 @@ class ApplicationController < Sinatra::Base
     erb :home
   end
 
-  get '/show' do
+  get '/form' do
     @envelopes = Envelope.all
-    erb :show
+    erb :form
+  end
+
+  post '/edited' do
+    @envelopes = Envelope.all
+    erb :form2
   end
 
   get '/w2' do
