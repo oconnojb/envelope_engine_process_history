@@ -84,21 +84,25 @@ end
 def whse
   nbr = Random.rand(1..3)
   case nbr
-    when 1
-      return "08"
-    when 2
-      return "09"
-    when 3
-      return "10"
-    end
+  when 1
+    return "08"
+  when 2
+    return "09"
+  when 3
+    return "10"
   end
+end
+
+def make_plannedenv
+  return Random.rand(5000...10000)
+end
 
 def make_outs
   nbr = Random.rand(20)
   Random.rand(11) >= 5 ? (return nbr) : (return nbr*1000)
 end
 
-def make_TFnil
+def make_USS
   nbr = Random.rand(1..10)
   if nbr >= 6
     return nil
@@ -109,8 +113,9 @@ def make_TFnil
   end
 end
 
+require 'date'
 def make_edate
-  year = Random.rand(2010..2018)
+  year = Random.rand(2000..2018)
   month = Random.rand(1..12)
   day = Random.rand(1..28)
   hour = Random.rand(1..24)
@@ -141,4 +146,30 @@ def make_note
     "Not enough parent to fill need."
    ]
  return notes[Random.rand(0..4)]
+end
+
+20.times do
+  Envelope.create(
+    in_prod: make_inprod(),
+    model: make_model(),
+    fg_item: make_item(),
+    item: make_item(),
+    fill_count: make_fillcount(),
+    in_sht_req: make_inshtreq(),
+    net_reqd: make_netreqd(),
+    available: make_available(),
+    avail_shts: make_availshts(),
+    whs_avail_now: make_available(),
+    this_id: make_thisid(),
+    linked_to_id: nil,
+    ship_whse: whse(),
+    make_whse: whse(),
+    planned_env: make_plannedenv(),
+    outs: make_outs(),
+    uses_safety_stock: make_USS(),
+    lined_type: nil,
+    e_date: make_edate(),
+    scenario: make_scenario(),
+    note: make_note()
+  )
 end
