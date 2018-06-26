@@ -9,13 +9,10 @@
   </tr>
 
   <% @envelopes.each do |envelope| %>
-  <tr>
-    <% params[:columns].each_with_index do |col, i| %>
-
-        <td> <%= envelope[params[:columns][i]] %> </td>
-
-    <% end %>
-  </tr>
-
+    <tr>
+      <% params[:columns].each_with_index do |col, i| %>
+          <td> <%= envelope[params[:columns][i]] %> </td>
+      <% end %>
+    </tr>
   <% end %>
 </table>
