@@ -9,9 +9,9 @@ class ApplicationController < Sinatra::Base
     erb :home
   end
 
-  get '/sample' do
+  get '/w1' do
     @envelopes = Envelope.all
-    erb :sample
+    erb :bootstrap_table
   end
 
   get '/form' do
