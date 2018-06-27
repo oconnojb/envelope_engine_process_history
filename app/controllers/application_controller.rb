@@ -9,6 +9,18 @@ class ApplicationController < Sinatra::Base
     erb :home
   end
 
+  get '/test' do
+    @envelopes = Envelope.all
+
+    erb :test
+  end
+
+  get '/test/:id' do
+    @env = Envelope.find(params[:id])
+    @attributes = Envelope.all.first.attributes.collect {|att, val| att if att != "id"}.compact
+    erb :testshow
+  end
+
   get '/w1' do
     @envelopes = Envelope.all
     @attributes = Envelope.all.first.attributes.collect {|att, val| att if att != "id"}.compact

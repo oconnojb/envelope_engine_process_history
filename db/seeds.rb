@@ -168,7 +168,7 @@ end
     outs: make_outs(),
     uses_safety_stock: make_USS(),
     lined_type: nil,
-    e_date: make_edate(),
+    e_date: DateTime.now,
     scenario: make_scenario(),
     note: make_note()
   )

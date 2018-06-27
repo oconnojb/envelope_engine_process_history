@@ -1,14 +1,14 @@
-<head>
-  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-  <link rel=”stylesheet” type=”text/css” href=”/style.css” />
-  <link rel=”stylesheet” type=”text/css” href=”/style2.css” />
-</head>
+<style media="screen">
+  #example {
+    table-layout: fixed;
+    width: 100%;
+    font-size: 9px;
+  }
+</style>
 
 <h1>TABLE:</h1>
 
-<table id="example" class="table table-striped table-bordered" style="width:100%">
+<table id="example">
   <thead>
     <tr>
       <% @attributes.each_with_index do |att, i| %>
@@ -17,13 +17,12 @@
     </tr>
 	</thead>
   <tbody>
-		<tr>
-			<td>Tiger Nixon</td>
-			<td>System Architect</td>
-			<td>Edinburgh</td>
-			<td>61</td>
-			<td>2011/04/25</td>
-			<td>$320,800</td>
-		</tr>
+      <% @envelopes.each_with_index do |env| %>
+      <tr>
+        <% @attributes.each_with_index do |att, i| %>
+    			<th> <%= env[@attributes[i]] %> </th>
+        <% end %>
+      </tr>
+      <% end %>
 	</tbody>
 </table>

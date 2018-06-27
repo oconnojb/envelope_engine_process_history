@@ -1,0 +1,20 @@
+<table border="1px solid black">
+  <thead>
+    <tr>
+      <th>Inprod</th>
+      <th>Model</th>
+      <th>FG_item</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @envelopes.each do |env| %>
+      <tr>
+        <td> <a href="/test/<%= env.id %>" target="_blank"><%= env.in_prod %></a> </td>
+        <td> <%= env.model %> </td>
+        <td> <%= env.fg_item %> </td>
+        <td> <%= env.note %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

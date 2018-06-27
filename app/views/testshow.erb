@@ -1,0 +1,5 @@
+<h1>Detail View</h1>
+
+<% @attributes.each do |att| %>
+  <p>*<%= att.upcase %>* <%= @env[att] %></p>
+<% end %>
