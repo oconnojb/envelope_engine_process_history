@@ -108,7 +108,7 @@ DEPENDENCIES
   database_cleaner!
   pry
   pry-nav
-  rack-test
+  rack-test (>= 1.0.0)
   rake
   require_all
   rspec

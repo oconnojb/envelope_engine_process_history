@@ -11,6 +11,7 @@ class ApplicationController < Sinatra::Base
 
   get '/w1' do
     @envelopes = Envelope.all
+    @attributes = Envelope.all.first.attributes.collect {|att, val| att if att != "id"}.compact
     erb :bootstrap_table
   end
 
